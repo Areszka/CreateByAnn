@@ -1,1 +1,73 @@
-// This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $primary;
+}
+
+//header
+
+
+#header {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+.header--menu {
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+    position: fixed;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo--text {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+}
+.logo--image {
+    height: 70px;
+    width: 70px;
+}
+
+.shadow {
+    -webkit-filter: drop-shadow( 1px 1px 4px rgba(0, 0, 0, .25));
+    filter: drop-shadow( 1px 1px 4px rgba(0, 0, 0, .25));
+}
+a {
+    text-decoration: none;
+    color: $secondary;
+}
+.menu {
+    position: absolute;
+    top: 40px;
+    right: 35px;
+}
+.menu--no {
+    display: none;
+}
+.nav__list {
+    list-style: none;
+}
+.nav--menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 100px 0;
+}
+.item__menu {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    padding: 35px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    &--big {
+        display: none;
+    }
+}
