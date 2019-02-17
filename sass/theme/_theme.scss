@@ -9,8 +9,7 @@ body {
 
 //header
 
-
-#header {
+.header {
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
@@ -34,21 +33,23 @@ body {
     height: 70px;
     width: 70px;
 }
-
-.shadow {
+.logo--shadow {
     -webkit-filter: drop-shadow( 1px 1px 4px rgba(0, 0, 0, .25));
     filter: drop-shadow( 1px 1px 4px rgba(0, 0, 0, .25));
 }
-a {
+.nav a {
     text-decoration: none;
     color: $secondary;
 }
-.menu {
+.nonav {
+    display: none;
+}
+.nav__icon {
     position: absolute;
     top: 40px;
     right: 35px;
 }
-.menu--no {
+.icon--no {
     display: none;
 }
 .nav__list {
@@ -62,12 +63,9 @@ a {
     text-align: center;
     padding: 100px 0;
 }
-.item__menu {
+.nav__item {
     font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     padding: 35px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-    &--big {
-        display: none;
-    }
 }
