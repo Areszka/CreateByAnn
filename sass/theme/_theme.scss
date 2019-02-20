@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
 
 body {
     margin: 0;
@@ -68,4 +69,75 @@ body {
     font-size: 26px;
     padding: 35px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+//content
+
+.bigBox {
+    display: flex;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 15px;
+    font-family: 'Cutive Mono', monospace;
+}
+.text--omnie {
+    text-align: center;
+    font-family: 'Cutive Mono', monospace;
+    width: 70%;
+    margin-top: 40px;
+}
+.image {
+    height: 90vw;
+    margin-left: -80px;
+}
+.image--omnie {
+    width: 60vw;
+    margin-top: 100px;
+
+}
+.btn {
+    background-color: $btn;
+    color: #000;
+    margin: 90px auto;
+    font-family: 'Cutive Mono', monospace;
+    text-align: center;
+    width: 190px;
+    padding: 12px;
+    font-size: 21px;
+    border-radius: 43px;
+    font-weight: 900;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.oMnie {
+    background-color: white;
+    padding-bottom: 100px;
+}
+.section__header {
+    color: #333;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 27px;
+    padding-top: 90px;
+    margin: -4px auto;
+    font-weight: 600;
+    box-shadow: 0 3px #333;
+    padding-bottom: 30px;
+    width: 200px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+.bigBox2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.produkty {
+    padding-bottom: 200px;
+}
+.producty__item {
+    list-style: none;
 }
