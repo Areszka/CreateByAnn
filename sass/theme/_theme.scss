@@ -55,6 +55,7 @@ body {
 }
 ul {
     list-style: none;
+    font-family: 'Montserrat', sans-serif;
 }
 .nav--menu {
     display: flex;
@@ -65,7 +66,7 @@ ul {
     padding: 100px 0;
 }
 .nav__item {
-    font-family: 'Montserrat', sans-serif;
+    
     font-size: 26px;
     padding: 35px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
@@ -97,7 +98,7 @@ ul {
 }
 .image--omnie {
     width: 60vw;
-    margin-top: 100px;
+    margin-top: 75px;
 
 }
 .btn {
@@ -123,12 +124,12 @@ ul {
     font-family: 'Montserrat', sans-serif;
     font-size: 27px;
     padding-top: 90px;
-    margin: -4px auto;
+    margin: -4px auto 30px;
     font-weight: 600;
-    box-shadow: 0 3px #333;
-    padding-bottom: 30px;
+    padding-bottom: 45px;
     width: 200px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border-bottom: #333 solid;
 }
 .bigBox2 {
     display: flex;
@@ -138,6 +139,16 @@ ul {
 .produkty {
     padding-bottom: 200px;
 }
-.producty__item {
-    list-style: none;
+.produkty__item {
+    padding: 7px;
+}
+.produkty__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+.kontakt {
+    background-color: #fff;
+    font-family: 'Cutive Mono', monospace;
 }

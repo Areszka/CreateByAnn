@@ -38,7 +38,6 @@ function cmb2_sample_metaboxes() {
 		'name' => __( 'Adres e-mail', 'cmb2' ),
 		'id'   => 'email',
 		'type' => 'text_email',
-		// 'repeatable' => true,
     ) );
     
     $cmb->add_field( array(
@@ -46,8 +45,6 @@ function cmb2_sample_metaboxes() {
 		'id'   => 'numer',
 		'type' => 'text',
 	) );
-
-	// Add other metaboxes as needed
 
 }
 ?>

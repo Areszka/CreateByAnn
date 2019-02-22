@@ -21,8 +21,6 @@ $understrap_includes = array(
 	'/customizer.php',                      // Customizer additions.
 	'/custom-comments.php',                 // Custom Comments file.
 	'/jetpack.php',                         // Load Jetpack compatibility file.
-	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-	'/woocommerce.php',                     // Load WooCommerce functions.
 	'/editor.php',   
 	'/custom-fields.php',                       // Load Editor functions.
 );
@@ -34,3 +32,20 @@ foreach ( $understrap_includes as $file ) {
 	}
 	require_once $filepath;
 }
+
+function category_custom_post_type() {
+	$args = array(
+        'labels' => array(
+            'name' => esc_attr__('Produkty'),
+			'singular_name' => esc_attr__('category'),
+			'add_new' => 'Dodaj nową kategorię',
+        ),
+        'public' => true,
+		'has_archive' => false,
+		'hierarchical' => true,
+		'taxonomies' => array('category', 'post_tag'),
+        'supports' => array('thumbnail', 'title', 'editor'),
+	);
+	register_post_type('category', $args );
+}
+add_action('init', 'category_custom_post_type');
