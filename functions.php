@@ -37,8 +37,8 @@ function category_custom_post_type() {
 	$args = array(
         'labels' => array(
             'name' => esc_attr__('Produkty'),
-			'singular_name' => esc_attr__('category'),
-			'add_new' => 'Dodaj nową kategorię',
+			'singular_name' => esc_attr__('Produkt'),
+			'add_new' => 'Dodaj nowy produkt',
         ),
         'public' => true,
 		'has_archive' => false,
@@ -46,6 +46,6 @@ function category_custom_post_type() {
 		'taxonomies' => array('category', 'post_tag'),
         'supports' => array('thumbnail', 'title', 'editor'),
 	);
-	register_post_type('category', $args );
+	register_post_type('product', $args );
 }
 add_action('init', 'category_custom_post_type');
