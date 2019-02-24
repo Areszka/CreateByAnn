@@ -101,18 +101,27 @@ ul {
     margin-top: 75px;
 
 }
+.btn--container {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .btn {
-    background-color: $btn;
+    background-color: #9CDCF1;
     color: #000;
-    margin: 90px auto;
     font-family: 'Cutive Mono', monospace;
-    text-align: center;
-    width: 190px;
     padding: 12px;
     font-size: 21px;
     border-radius: 43px;
     font-weight: 900;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    transition: all .2s ease-in-out;
+}
+.btn:hover {
+    background-color: #fff;
+    padding: 13px;
+    font-size: 22px;
 }
 .oMnie {
     background-color: white;
