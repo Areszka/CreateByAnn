@@ -34,7 +34,7 @@ $categories = get_categories(
 );
 echo( '<div class="produkty__categories">' );
 foreach ( $categories as $category ) {
-	echo( '<p class="produkty__category" data-category="' . $category->slug . '">' . esc_html( $category->name ) . '</p>' );
+	echo( '<p class="produkty__category" data-category="' . $category->term_id . '">' . esc_html( $category->name ) . '</p>' );
 }
 echo( '</div>' );
 
@@ -46,7 +46,7 @@ $tags = get_tags(
 	)
 );
 foreach ( $categories as $category ) {
-	echo( '<div class="produkty__tags" data-category="' . $category->slug . '">' );
+	echo( '<div class="produkty__tags" data-category="' . $category->term_id . '">' );
 	foreach ( $tags as $tag ) {
 		$args = array(
 			'post_type'     => 'product',
@@ -55,29 +55,14 @@ foreach ( $categories as $category ) {
 		);
 		$the_query = new WP_Query( $args );
 		if ( $the_query->have_posts() ) {
-			echo( '<p class="produkty__tag" data-category="' . $category->slug . '" data-tag="' . $tag->term_id . '">' . esc_html( $tag->name ) . '</p>' );
+			echo( '<p class="produkty__tag" data-category="' . $category->term_id . '" data-tag="' . $tag->term_id . '">' . esc_html( $tag->name ) . '</p>' );
 		}
 	}
 	echo( '</div>' );
 }
-		// // Wyświetlanie produktów danego tagu i kategorii,
-		// // zakomentowane bo nie było wcześniej wrzucane a gdzieś w ajaxie potem tego na pewno użyjemy
-		// $args = array(
-		// 'post_type'     => 'product',
-		// 'category_name' => $category->slug,
-		// 'tag_id'        => $tag->term_id,
-		// );
-		// $the_query = new WP_Query( $args );
-		// if ( $the_query->have_posts() ) {
-		// echo( '<ul class="produkty__list">' );
-		// while ( $the_query->have_posts() ) {
-		// $the_query->the_post();
-		// echo '<li class="produkty__item">' . get_the_title() . '</li>';
-		// }
-		// wp_reset_postdata();
-		// echo( '</ul>' );
-		// }
-?>
+		?>
+	<ul class="produkty__list">
+	</ul>
 </div>
 
 <svg width="100%" viewBox="0 0 544 125" fill="none" xmlns="http://www.w3.org/2000/svg">

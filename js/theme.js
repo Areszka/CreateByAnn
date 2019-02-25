@@ -1,3 +1,5 @@
+require('./api');
+
 const navbar = () => {
     let icon = document.querySelector('.icon2');
     let icon2 = icon.classList.contains("icon--no");

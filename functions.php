@@ -35,17 +35,18 @@ foreach ( $understrap_includes as $file ) {
 
 function category_custom_post_type() {
 	$args = array(
-        'labels' => array(
-            'name' => esc_attr__('Produkty'),
-			'singular_name' => esc_attr__('Produkt'),
-			'add_new' => 'Dodaj nowy produkt',
-        ),
-        'public' => true,
-		'has_archive' => false,
+		'labels' => array(
+			'name'          => esc_attr__( 'Produkty' ),
+			'singular_name' => esc_attr__( 'Produkt' ),
+			'add_new'       => 'Dodaj nowy produkt',
+		),
+		'public'       => true,
+		'has_archive'  => false,
 		'hierarchical' => true,
-		'taxonomies' => array('category', 'post_tag'),
-        'supports' => array('thumbnail', 'title', 'editor'),
+		'taxonomies'   => array( 'category', 'post_tag' ),
+		'supports'     => array( 'title' ),
+		'show_in_rest' => true,
 	);
-	register_post_type('product', $args );
+	register_post_type( 'product', $args );
 }
-add_action('init', 'category_custom_post_type');
+add_action( 'init', 'category_custom_post_type');

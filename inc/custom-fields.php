@@ -1,12 +1,8 @@
-<?php add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
+<?php add_action( 'cmb2_init', 'cmb2_sample_metaboxes' );
 /**
  * Define the metabox and field configurations.
  */
 function cmb2_sample_metaboxes() {
-
-	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_yourprefix_';
-
 	/**
 	 * Initiate the metabox
 	 */
@@ -17,8 +13,6 @@ function cmb2_sample_metaboxes() {
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
-		// 'cmb_styles' => false, // false to disable the CMB stylesheet
-		// 'closed'     => true, // Keep the metabox closed by default
 	) );
 
 	$cmb->add_field( array(
@@ -46,5 +40,31 @@ function cmb2_sample_metaboxes() {
 		'type' => 'text',
 	) );
 
+	$cmb_product = new_cmb2_box( array(
+		'id'            => 'product',
+		'title'         => __( 'Edytor produktu', 'cmb2' ),
+		'object_types'  => array( 'product', ), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		'show_in_rest'  => true,
+	) );
+
+	$cmb_product->add_field( array(
+		'name'       => __( 'Cena', 'cmb2' ),
+		'desc'       => __( 'w złotówkach', 'cmb2' ),
+		'id'         => 'price',
+		'type'       => 'text_small',
+	) );
+
+	$cmb_product->add_field( array(
+		'name'    => 'Zdjęcie produktu',
+		'id'      => 'image',
+		'type'    => 'file',
+		'options' => array(
+			'url' => false,
+		),
+		'preview_size' => 'large', // Image size to use when previewing in the admin.
+	) );
 }
 ?>
