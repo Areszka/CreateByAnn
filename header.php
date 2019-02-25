@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 		</div>
 		<div class="nav">
 			<ul class="nav__list nonav">
-                <li class="nav__item"><a href="#">PRODUKTY</a></li>
+                <li class="nav__item"><a href="#produkty">PRODUKTY</a></li>
                 <li class="nav__item"><a href="#">O MNIE</a></li>
                 <li class="nav__item"><a href="#">KONTAKT</a></li>
             </ul>

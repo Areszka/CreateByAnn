@@ -9,9 +9,11 @@ get_header();
 	<img class="image" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
 	<div class="box"><?php echo esc_html(get_post_meta(get_the_ID(), "url", true))?></div>
 </div>
-<div class="btn">Zobacz produkt</div>
-	<svg width="100%" viewBox="0 0 2304 478" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<path fill-rule="evenodd" clip-rule="evenodd" d="M1083 193.761C332.5 359.198 0 0 0 0V478H2304V448.598C2304 448.598 1833.5 28.3228 1083 193.761Z" fill="white"/></svg>
+<div class="btn--container">
+    <div class="btn">Zobacz produkt</div>
+</div>
+    <svg width="100%" viewBox="0 0 2304 478" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M1083 193.761C332.5 359.198 0 0 0 0V478H2304V448.598C2304 448.598 1833.5 28.3228 1083 193.761Z" fill="white"/></svg>
 <div class="oMnie">
 	<div class="section__header">O MNIE</div>
 	<div class="bigBox2">
