@@ -38,13 +38,13 @@ echo( '</div>' );
 
 // Wyświetlanie tagów w kolejności alfabetycznej dla każdej kategorii
 // (tag wyświetla się jeżeli istnieje produkt danej kategorii z tym tagiem)
+$tags = get_tags(
+	array(
+		'orderby' => 'name',
+	)
+);
 foreach ( $categories as $category ) {
 	echo( '<div class="produkty__tags" data-category="' . $category->slug . '">' );
-	$tags = get_tags(
-		array(
-			'orderby' => 'name',
-		)
-	);
 	foreach ( $tags as $tag ) {
 		$args = array(
 			'post_type'     => 'product',
