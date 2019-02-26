@@ -1,100 +1,105 @@
-import axios from 'axios';
-const documentTags = document.querySelectorAll('.produkty__tag');
-const productsContainer = document.querySelector('.produkty__list');
+import axios from "axios";
 
-for (const documentTag of documentTags) {
-  documentTag.addEventListener('click', () => {
-    
-    for (const tag of documentTags) {
-      tag.classList.remove('active');      
-    }
-    documentTag.classList.add('active');
-    const category = documentTag.dataset.category;
-    const tag = documentTag.dataset.tag;
-    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${category}&tags=${tag}`;
+const SINGLE_CATEGORY_ARRAY = document.querySelectorAll(".produkty__category");
+const SINGLE_TAG_ARRAY = document.querySelectorAll(".produkty__tag");
+const PRODUCTS_DIV = document.querySelector(".produkty__list");
+
+const makeActive = activatedElement => {
+  activatedElement.classList.add("active");
+};
+
+const clearActiveAll = containingArray => {
+  for (const element of containingArray) {
+    element.classList.remove("active");
+  }
+};
+
+const clearProducts = () =>{
+  while (PRODUCTS_DIV.firstChild) {
+    PRODUCTS_DIV.removeChild(PRODUCTS_DIV.firstChild);
+  }
+}
+
+const createProduct = product => {
+  //get data from REST API response
+  const productImage = product.cmb2.product.image;
+  const productId = product.id;
+  const productPrice = product.cmb2.product.price + " zł";
+  //prepare product container
+  const productDiv = document.createElement("div");
+  productDiv.setAttribute("class", "produkty__item");
+  //prepare and append product image
+  const image = document.createElement("img");
+  image.setAttribute("src", productImage);
+  image.setAttribute("alt", "zdjęcie kartki");
+  image.setAttribute("width", "100px");
+  image.setAttribute("height", "100px");
+  productDiv.appendChild(image);
+  //prepare and append product id
+  const idElement = document.createElement("p");
+  const idText = document.createTextNode(productId);
+  idElement.appendChild(idText);
+  productDiv.appendChild(idElement);
+  //prepare and append product price
+  const priceElement = document.createElement("p");
+  const priceText = document.createTextNode(productPrice);
+  priceElement.appendChild(priceText);
+  productDiv.appendChild(priceElement);
+  //append product to DOM, to nie jest 'pure function' bo korzysta z wartości znajdującej się poza funkcją (PRODUCTS_DIV)
+  PRODUCTS_DIV.appendChild(productDiv);
+};
+
+
+//give event listener to all tags 
+for (const singleTag of SINGLE_TAG_ARRAY) {
+  singleTag.addEventListener("click", () => {
+    clearActiveAll(SINGLE_TAG_ARRAY);
+    makeActive(singleTag);
+
+    const requestedCategory = singleTag.dataset.category;
+    const requestedTag = singleTag.dataset.tag;
+
+    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${requestedCategory}&tags=${requestedTag}`;
     axios.get(url).then(response => {
-      while (productsContainer.firstChild) {
-        productsContainer.removeChild(productsContainer.firstChild);
-      }
-      for (const item of response.data) {
-        const productDiv = document.createElement('div');
-        productDiv.setAttribute('class','produkty__item')
-
-        const image = document.createElement('img');
-        image.setAttribute('src', item.cmb2.product.image);
-        image.setAttribute('alt', 'zdjęcie kartki');
-        image.setAttribute('width', '100px');
-        image.setAttribute('height', '100px');
-        productDiv.appendChild(image);
-
-        const id = document.createTextNode(item.id);
-        const idElement = document.createElement('p');
-        idElement.appendChild(id);
-        productDiv.appendChild(idElement);
-
-        const price = document.createTextNode(item.cmb2.product.price + ' zł');
-        const priceElement = document.createElement('p');
-        priceElement.appendChild(price);
-        productDiv.appendChild(priceElement);
-
-        productsContainer.appendChild(productDiv);
+      clearProducts();
+      for (const product of response.data) {
+        createProduct(product);
       }
     });
   });
 }
 
-const documentCategories = document.querySelectorAll('.produkty__category');
 
-for (const documentCategory of documentCategories) {
-  documentCategory.addEventListener('click', () => {
-    const category = documentCategory.dataset.category;
-    const tag = documentCategory.dataset.tag;
-    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${category}`;
-    axios.get(url).then(response => {
-      while (productsContainer.firstChild) {
-        productsContainer.removeChild(productsContainer.firstChild);
+for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
+  singleCategory.addEventListener("click", () => {
+    clearActiveAll(SINGLE_CATEGORY_ARRAY);
+    clearActiveAll(SINGLE_TAG_ARRAY);
+    makeActive(singleCategory);
+    //hide all previously shown tags
+    for (const singleTag of SINGLE_TAG_ARRAY) {
+      const tagsContainer = singleTag.parentElement;
+      tagsContainer.classList.remove("active");
+    }
+    //show all tags of currently selected category
+    for (const singleTag of SINGLE_TAG_ARRAY) {
+      if (singleTag.dataset.category == singleCategory.dataset.category) {
+        const tagsContainer = singleTag.parentElement;
+        makeActive(tagsContainer);
+        break;
       }
-      for (const item of response.data) {
-        const productDiv = document.createElement('div');
-        productDiv.setAttribute('class','produkty__item')
+    }
+  });
 
-        const image = document.createElement('img');
-        image.setAttribute('src', item.cmb2.product.image);
-        image.setAttribute('alt', 'zdjęcie kartki');
-        image.setAttribute('width', '100px');
-        image.setAttribute('height', '100px');
-        productDiv.appendChild(image);
-
-        const id = document.createTextNode(item.id);
-        const idElement = document.createElement('p');
-        idElement.appendChild(id);
-        productDiv.appendChild(idElement);
-
-        const price = document.createTextNode(item.cmb2.product.price + ' zł');
-        const priceElement = document.createElement('p');
-        priceElement.appendChild(price);
-        productDiv.appendChild(priceElement);
-
-        productsContainer.appendChild(productDiv);
+  //event listener to get API data
+  singleCategory.addEventListener("click", () => {
+    const category = singleCategory.dataset.category;
+    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${category}`;
+    //make API request
+    axios.get(url).then(response => {
+      clearProducts();
+      for (const product of response.data) {
+        createProduct(product);
       }
     });
   });
-  documentCategory.addEventListener('click',()=>{
-    for (const category of documentCategories) {
-      category.classList.remove('active');      
-    }
-    for (const tag of documentTags) {
-      tag.classList.remove('active');      
-    }
-    documentCategory.classList.add('active');
-    for (const documentTag of documentTags) {
-        documentTag.parentElement.classList.remove('active');
-      }  
-    for (const documentTag of documentTags) {
-      if(documentTag.dataset.category==documentCategory.dataset.category){
-        documentTag.parentElement.classList.add('active');
-        break;
-      }  
-    }
-  })
 }
