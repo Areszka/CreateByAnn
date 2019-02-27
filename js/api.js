@@ -4,8 +4,8 @@ const SINGLE_CATEGORY_ARRAY = document.querySelectorAll(".produkty__category");
 const SINGLE_TAG_ARRAY = document.querySelectorAll(".produkty__tag");
 const PRODUCTS_DIV = document.querySelector(".produkty__list");
 
-const makeActive = activatedElement => {
-  activatedElement.classList.add("active");
+const makeActive = element => {
+  element.classList.add("active");
 };
 
 const clearActiveAll = containingArray => {
@@ -69,6 +69,7 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
   });
 }
 
+const TAGS_CONTAINER_ARRAY = document.querySelectorAll('.produkty__tags');
 
 for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
   singleCategory.addEventListener("click", () => {
@@ -76,14 +77,13 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
     clearActiveAll(SINGLE_TAG_ARRAY);
     makeActive(singleCategory);
     //hide all previously shown tags
-    for (const singleTag of SINGLE_TAG_ARRAY) {
-      const tagsContainer = singleTag.parentElement;
+
+    for (const tagsContainer of TAGS_CONTAINER_ARRAY) {
       tagsContainer.classList.remove("active");
     }
     //show all tags of currently selected category
-    for (const singleTag of SINGLE_TAG_ARRAY) {
-      if (singleTag.dataset.category == singleCategory.dataset.category) {
-        const tagsContainer = singleTag.parentElement;
+    for (const tagsContainer of TAGS_CONTAINER_ARRAY) {
+      if (tagsContainer.dataset.category == singleCategory.dataset.category) {
         makeActive(tagsContainer);
         break;
       }
