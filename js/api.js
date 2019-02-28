@@ -3,6 +3,8 @@ import axios from "axios";
 const SINGLE_CATEGORY_ARRAY = document.querySelectorAll(".produkty__category");
 const SINGLE_TAG_ARRAY = document.querySelectorAll(".produkty__tag");
 const PRODUCTS_DIV = document.querySelector(".produkty__list");
+let currentCategory = "";
+let currentTag = "";
 
 const makeActive = element => {
   element.classList.add("active");
@@ -14,11 +16,11 @@ const clearActiveAll = containingArray => {
   }
 };
 
-const clearProducts = () =>{
+const clearProducts = () => {
   while (PRODUCTS_DIV.firstChild) {
     PRODUCTS_DIV.removeChild(PRODUCTS_DIV.firstChild);
   }
-}
+};
 
 const createProduct = product => {
   //get data from REST API response
@@ -49,8 +51,7 @@ const createProduct = product => {
   PRODUCTS_DIV.appendChild(productDiv);
 };
 
-
-//give event listener to all tags 
+//give event listener to all tags
 for (const singleTag of SINGLE_TAG_ARRAY) {
   singleTag.addEventListener("click", () => {
     clearActiveAll(SINGLE_TAG_ARRAY);
@@ -62,6 +63,10 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
     const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${requestedCategory}&tags=${requestedTag}`;
     axios.get(url).then(response => {
       clearProducts();
+      currentCategory = requestedCategory;
+      currentTag = requestedTag;
+      currentPage = 1;
+      arrowBack.style.display = "none";
       for (const product of response.data) {
         createProduct(product);
       }
@@ -69,7 +74,7 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
   });
 }
 
-const TAGS_CONTAINER_ARRAY = document.querySelectorAll('.produkty__tags');
+const TAGS_CONTAINER_ARRAY = document.querySelectorAll(".produkty__tags");
 
 for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
   singleCategory.addEventListener("click", () => {
@@ -92,14 +97,61 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
 
   //event listener to get API data
   singleCategory.addEventListener("click", () => {
-    const category = singleCategory.dataset.category;
-    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${category}`;
+    const requestedCategory = singleCategory.dataset.category;
+    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${requestedCategory}`;
     //make API request
     axios.get(url).then(response => {
       clearProducts();
+      currentCategory = requestedCategory;
+      currentTag = "";
+      currentPage = 1;
+      arrowBack.style.display = "none";
       for (const product of response.data) {
         createProduct(product);
       }
     });
   });
 }
+
+let currentPage = 1;
+const arrowBack = document.querySelector(".arrow-back");
+const arrowForward = document.querySelector(".arrow-forward");
+
+arrowBack.addEventListener("click", () => {
+  currentPage--;
+  arrowForward.style.display = "block";
+  if (currentPage === 1) {
+    arrowBack.style.display = "none";
+  }
+  const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}&categories=${currentCategory}${
+    currentTag != "" ? `&tags=${currentTag}` : ""
+  }`;
+  //make API request
+  axios.get(url).then(response => {
+    clearProducts();
+    for (const product of response.data) {
+      createProduct(product);
+    }
+  });
+});
+
+arrowForward.addEventListener("click", () => {
+  currentPage++;
+  arrowBack.style.display = "block";
+  const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}&categories=${currentCategory}${
+    currentTag != "" ? `&tags=${currentTag}` : ""
+  }`;
+  //make API request
+  axios.get(url).then(response => {
+    clearProducts();
+    if (response.data.length < 9) {
+      arrowForward.style.display = "none";
+    }
+    for (const product of response.data) {
+      createProduct(product);
+    }
+  }).catch(error=>{
+    arrowForward.style.display = "none";
+    console.log(error);
+  });
+});

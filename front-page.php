@@ -63,6 +63,12 @@ foreach ( $categories as $category ) {
 		?>
 	<ul class="produkty__list">
 	</ul>
+	<div class="arrow-back" style="display: none;">
+		<-
+	</div>
+	<div class="arrow-forward">
+		->
+	</div>
 </div>
 
 <svg width="100%" viewBox="0 0 544 125" fill="none" xmlns="http://www.w3.org/2000/svg">
