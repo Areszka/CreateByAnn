@@ -25,7 +25,7 @@ const clearProducts = () => {
 const createProduct = product => {
   //get data from REST API response
   const productImage = product.cmb2.product.image;
-  const productId = product.id;
+  const productId = "Nr " + product.id;
   const productPrice = product.cmb2.product.price + " zł";
   //prepare product container
   const productDiv = document.createElement("div");
@@ -34,16 +34,16 @@ const createProduct = product => {
   const image = document.createElement("img");
   image.setAttribute("src", productImage);
   image.setAttribute("alt", "zdjęcie kartki");
-  image.setAttribute("width", "100px");
-  image.setAttribute("height", "100px");
   productDiv.appendChild(image);
   //prepare and append product id
   const idElement = document.createElement("p");
+  idElement.setAttribute("class", "produkty__nr");
   const idText = document.createTextNode(productId);
   idElement.appendChild(idText);
   productDiv.appendChild(idElement);
   //prepare and append product price
   const priceElement = document.createElement("p");
+  priceElement.setAttribute("class", "produkty__price");
   const priceText = document.createTextNode(productPrice);
   priceElement.appendChild(priceText);
   productDiv.appendChild(priceElement);
