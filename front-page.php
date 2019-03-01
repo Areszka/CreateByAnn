@@ -33,7 +33,8 @@ $categories = get_categories(
 	)
 );
 echo( '<div class="produkty__categories">' );
-foreach ( $categories as $category ) {
+	echo( '<p class="produkty__category active" data-category="">Wszystkie</p>' );
+	foreach ( $categories as $category ) {
 	echo( '<p class="produkty__category" data-category="' . $category->term_id . '">' . esc_html( $category->name ) . '</p>' );
 }
 echo( '</div>' );
@@ -60,8 +61,34 @@ foreach ( $categories as $category ) {
 	}
 	echo( '</div>' );
 }
-		?>
+	echo( '<div class="produkty__tags active" data-category="">' );
+	foreach ( $tags as $tag ) {
+		echo( '<p class="produkty__tag" data-tag="' . $tag->term_id . '" data-category="">' . esc_html( $tag->name ) . '</p>' );
+	}
+	echo( '</div>' );
+?>
+		
 	<ul class="produkty__list">
+
+	<?php
+// The Query
+$args = array(
+	'post_type' => 'product',
+	'posts_per_page' => 9,
+);
+$the_query = new WP_Query( $args );
+// The Loop
+if ( $the_query->have_posts() ) {
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		echo '<li>' . get_the_title() . '</li>';
+	}
+	wp_reset_postdata();
+} else {
+	// no posts found
+}
+?>
+
 	</ul>
 	<div class="arrow-back" style="display: none;">
 		<-

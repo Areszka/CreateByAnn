@@ -60,8 +60,13 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
     const requestedCategory = singleTag.dataset.category;
     const requestedTag = singleTag.dataset.tag;
 
-    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${requestedCategory}&tags=${requestedTag}`;
+  const url = `/wp-json/wp/v2/product/?per_page=9&page=1${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}${requestedTag != "" ? `&tags=${requestedTag}` : ""}`;
     axios.get(url).then(response => {
+      if(response.data.length<9){
+        arrowForward.style.display='none';
+      }else{
+        arrowForward.style.display='block';
+      }
       clearProducts();
       currentCategory = requestedCategory;
       currentTag = requestedTag;
@@ -98,9 +103,14 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
   //event listener to get API data
   singleCategory.addEventListener("click", () => {
     const requestedCategory = singleCategory.dataset.category;
-    const url = `/wp-json/wp/v2/product/?per_page=9&page=1&categories=${requestedCategory}`;
+    const url = `/wp-json/wp/v2/product/?per_page=9&page=1${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}`;
     //make API request
     axios.get(url).then(response => {
+      if(response.data.length<9){
+        arrowForward.style.display='none';
+      }else{
+        arrowForward.style.display='block';
+      }
       clearProducts();
       currentCategory = requestedCategory;
       currentTag = "";
@@ -123,9 +133,7 @@ arrowBack.addEventListener("click", () => {
   if (currentPage === 1) {
     arrowBack.style.display = "none";
   }
-  const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}&categories=${currentCategory}${
-    currentTag != "" ? `&tags=${currentTag}` : ""
-  }`;
+  const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
   //make API request
   axios.get(url).then(response => {
     clearProducts();
@@ -138,20 +146,21 @@ arrowBack.addEventListener("click", () => {
 arrowForward.addEventListener("click", () => {
   currentPage++;
   arrowBack.style.display = "block";
-  const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}&categories=${currentCategory}${
-    currentTag != "" ? `&tags=${currentTag}` : ""
-  }`;
+  const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
   //make API request
-  axios.get(url).then(response => {
-    clearProducts();
-    if (response.data.length < 9) {
+  axios
+    .get(url)
+    .then(response => {
+      clearProducts();
+      if (response.data.length < 9) {
+        arrowForward.style.display = "none";
+      }
+      for (const product of response.data) {
+        createProduct(product);
+      }
+    })
+    .catch(error => {
       arrowForward.style.display = "none";
-    }
-    for (const product of response.data) {
-      createProduct(product);
-    }
-  }).catch(error=>{
-    arrowForward.style.display = "none";
-    console.log(error);
-  });
+      console.log(error);
+    });
 });
