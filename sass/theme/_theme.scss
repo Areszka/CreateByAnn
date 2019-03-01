@@ -55,7 +55,7 @@ body {
 }
 ul {
   list-style: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: $mainfont, sans-serif;
   padding: 0;
 }
 .nav--menu {
@@ -130,7 +130,7 @@ ul {
   transform: scaleY(1.1);
 }
 .section__header {
-  font-family: "Montserrat", sans-serif;
+  font-family: $mainfont, sans-serif;
   font-size: 27px;
   font-weight: 600;
   padding-top: 75px;
@@ -146,7 +146,7 @@ ul {
   align-items: center;
 }
 .produkty {
-  font-family: "Montserrat", sans-serif;
+  font-family: $mainfont;
   padding-bottom: 200px;
   &__categories {
     display: flex;
@@ -162,18 +162,27 @@ ul {
     margin: 0 0 10px 0;
     transform: scaleY(1.2);
     font-size: 18px;
-    &.active {
-      border-bottom: 3px #333 solid;
-      font-weight: 900;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: $hover 1px solid;
+      transform: scaleX(0);
+      transition: transform 250ms ease-in-out;
     }
-  }
+    &:hover::after {
+      transform: scaleX(1);
+    }
+    &.active {
+      color: $hover;
+      font-weight: 700;
+    }}
 
   &__tags {
     display: none;
     margin-bottom: 30px;
     
     &.active {
-      display: block;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -185,8 +194,13 @@ ul {
     border: 1px #333 solid;
     border-radius: 22px;
     margin: 0 5px 10px 5px;
+    transition: all 0.15s ease-in;
+    &:hover {
+      transform: scale(1.05);
+    }
     &.active {
-      background-color: #333;
+      border-color: #fff;
+      background-color: $hover;
       color: #fff;
     }
   }
