@@ -1,0 +1,22 @@
+@media only screen and (min-width: 672px) {
+    .produkty {
+        &__list {
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 100px 30px;
+            gap: 40px 70px;
+            & p {
+              font-size: 20px;
+            }
+          }
+        &__category {
+            font-size: 1.5em;
+        }
+        &__tag {
+            font-size: 1.3em;
+        }
+
+    }
+    .section__header {
+        font-size: 35px;
+  }
+} 
