@@ -10,7 +10,7 @@ get_header();
 	<div class="box"><?php echo esc_html(get_post_meta(get_the_ID(), "url", true))?></div>
 </div>
 <div class="btn--container">
-    <div class="btn">Zobacz produkt</div>
+    <div class="btn">Zobacz produkty</div>
 </div>
     <svg width="100%" viewBox="0 0 2304 478" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M1083 193.761C332.5 359.198 0 0 0 0V478H2304V448.598C2304 448.598 1833.5 28.3228 1083 193.761Z" fill="white"/></svg>
@@ -90,12 +90,12 @@ if ( $the_query->have_posts() ) {
 ?>
 
 	</ul>
-	<div class="arrow-back" style="display: none;">
-	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-	</div>
-	<div class="arrow-forward">
-	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-	</div>
+	<div class="produkty__nav">
+		<svg class="arrow-back" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+		<span class="num"></span>
+		<svg class="arrow-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+	</span>
+</div>
 </div>
 
 <svg width="100%" viewBox="0 0 544 125" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,11 +106,27 @@ if ( $the_query->have_posts() ) {
 	<div class="section__header"><p>KONTAKT</p></div>
 	<p>Adres email: <?php echo esc_html(get_post_meta(get_the_ID(), "email", true))?></p>
 	<p>Numer telefonu: <?php echo esc_html(get_post_meta(get_the_ID(), "numer", true))?></p>
-	<form class="contact-form" action="contactform.php" method="post">
-		<input type="text" name="name">
-		<input type="text" name="mail">
-		<input type="text" name="numer">
-		<input type="text" name="name">
+	<form class="kontakt__form" action="contactform.php" method="post">
+		<div class="myInput">
+			<input type="text" name="name" id="name">
+			<label for="name">Imię i nazwisko</label>
+		</div>
+		<div class="myInput">
+			<input type="text" name="subject" id="subject">
+			<label for="subject">Temat</label>
+		</div>
+		<div class="myInput">
+			<input type="text" name="numer" id="numer">	
+			<label for="numer">Numer telefonu</label>
+		</div>
+		<div class="myInput">
+			<input type="text" name="message" id="message">
+			<label for="message">Treść wiadomości</label>
+		</div>
+	</form>
+	<div class="btn--container">
+    	<div class="btn">Wyślij</div>
+	</div>
 </div>
 <?php get_footer(); ?>
 

@@ -124,11 +124,14 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
 }
 
 let currentPage = 1;
+let pageNumber = document.querySelector(".num");
+pageNumber.innerHTML = currentPage;
 const arrowBack = document.querySelector(".arrow-back");
 const arrowForward = document.querySelector(".arrow-forward");
 
 arrowBack.addEventListener("click", () => {
   currentPage--;
+  pageNumber.innerHTML = currentPage;
   arrowForward.style.display = "block";
   if (currentPage === 1) {
     arrowBack.style.display = "none";
@@ -145,6 +148,7 @@ arrowBack.addEventListener("click", () => {
 
 arrowForward.addEventListener("click", () => {
   currentPage++;
+  pageNumber.innerHTML = currentPage;
   arrowBack.style.display = "block";
   const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
   //make API request

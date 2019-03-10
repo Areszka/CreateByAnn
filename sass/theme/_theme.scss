@@ -14,6 +14,7 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 20px 0;
+  margin-bottom: 20px;
 }
 .header--menu {
   flex-direction: column;
@@ -93,7 +94,7 @@ ul {
   margin-top: 40px;
 }
 .image {
-  height: 90vw;
+  height: 300px;
   margin-left: -80px;
 }
 .image--omnie {
@@ -101,10 +102,10 @@ ul {
   margin-top: 75px;
 }
 .btn--container {
-  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 150px;
 }
 .btn {
   background-color: #9cdcf1;
@@ -231,8 +232,65 @@ ul {
   &__price {
     float: right;
   }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    & svg {
+      width: 35px;
+    }
+  }
+}
+.num {
+  padding: 20px;
+  font-family: "Cutive Mono", monospace;
 }
 .kontakt {
   background-color: #fff;
   font-family: "Cutive Mono", monospace;
+  & p {
+    text-align: center;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    & label {
+      margin-bottom: -8px;
+      background-color: white;
+      padding: 0 5px;
+      transition: all 0.2s ease-in-out;
+      font-size: 1.2em;
+    }
+    & input {
+      width: 85%;
+      border: #9CDCF1 1px solid;
+      box-shadow: 0px 0px 3px #9CDCF1;
+      margin-bottom: 30px;
+      height: 40px;
+      padding-left: 10px;
+    }
+    & input:focus {
+      outline: 0;
+      border: #4dbfe6 2px solid;
+    }
+  }
+  & .btn {
+    padding: 12px 50px;
+  }
+}
+#message {
+  height: 300px;
+}
+.myInput {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 100%;
+}
+input:focus + label{
+  transform: translateY(-10px) scale(0.9, 0.9);
 }

@@ -12,7 +12,7 @@
             font-size: 1.5em;
         }
         &__tag {
-            font-size: 1.3em;
+            font-size: 1.1em;
         }
 
     }
@@ -20,3 +20,9 @@
         font-size: 35px;
   }
 } 
+
+@media screen and (min-width: 565px) {
+  .kontakt__form input {
+    width: 485px;
+  }
+}
