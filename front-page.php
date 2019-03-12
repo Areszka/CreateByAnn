@@ -81,8 +81,12 @@ $the_query = new WP_Query( $args );
 if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
-		echo '<li>' . get_the_title() . '</li>';
-	}
+		echo ( '<li class="produkty__item">' .
+		'<img src="' . esc_html( get_post_meta( get_the_ID(), 'image', true ) ) . '" alt="">' .
+		'<p class="produkty__nr">Nr ' . get_the_ID() . '</p>' .
+		'<p class="produkty__price">' . esc_html( get_post_meta( get_the_ID(), 'price', true ) ) . ' zł</p>' .
+		'</li>'
+	);}
 	wp_reset_postdata();
 } else {
 	// no posts found

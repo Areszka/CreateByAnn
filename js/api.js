@@ -28,7 +28,7 @@ const createProduct = product => {
   const productId = "Nr " + product.id;
   const productPrice = product.cmb2.product.price + " zł";
   //prepare product container
-  const productDiv = document.createElement("div");
+  const productDiv = document.createElement("li");
   productDiv.setAttribute("class", "produkty__item");
   //prepare and append product image
   const image = document.createElement("img");
