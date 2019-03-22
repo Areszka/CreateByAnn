@@ -10,46 +10,64 @@ body {
 
 //header
 
-.header {
+header {
   display: flex;
-  justify-content: space-around;
-  padding: 20px 0;
-  margin-bottom: 20px;
+  margin: 20px 0;
+  padding: 0 35px;
 }
 .header--menu {
+  margin: 0;
+  padding: 0;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
   background-color: #fff;
-  position: fixed;
 }
 .logo {
   display: flex;
   align-items: center;
+  &--text {
+    font-family: "Caveat", cursive;
+    font-size: 30px;
+  }
+  &--image {
+    height: 70px;
+    width: 70px;
+  }
+  &--shadow {
+    -webkit-filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.25));
+  }
 }
-.logo--text {
-  font-family: "Caveat", cursive;
-  font-size: 30px;
-}
-.logo--image {
-  height: 70px;
-  width: 70px;
-}
-.logo--shadow {
-  -webkit-filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.25));
-  filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.25));
-}
-.nav a {
-  text-decoration: none;
-  color: $secondary;
-}
-.nonav {
-  display: none;
-}
-.nav__icon {
-  position: absolute;
-  top: 40px;
-  right: 35px;
+.nav {
+  & a {
+    text-decoration: none;
+    color: $secondary;
+  }
+  &--no {
+    display: none;
+  }
+  &__icon {
+    position: absolute;
+    top: 40px;
+    right: 35px;
+  }
+  &--menu {
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  &__item {
+    font-size: 26px;
+    padding: 35px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    transform: scaleY(1.1);
+  }
+  &__list {
+    display: flex;
+  }
 }
 .icon--no {
   display: none;
@@ -58,19 +76,6 @@ ul {
   list-style: none;
   font-family: $mainfont, sans-serif;
   padding: 0;
-}
-.nav--menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-  padding: 100px 0;
-}
-.nav__item {
-  font-size: 26px;
-  padding: 35px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 //content

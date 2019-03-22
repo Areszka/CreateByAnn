@@ -26,3 +26,20 @@
     width: 485px;
   }
 }
+
+@media screen and (min-width: 670px) {
+  .nav__icon {
+    display: none;
+  }
+  .nav {
+    display: inline;
+    &__item {
+      font-size: 21px;
+      padding: 0 0 0 20px;
+    }
+  }
+  header {
+    align-items: center;
+    justify-content: space-around;
+  }
+}
