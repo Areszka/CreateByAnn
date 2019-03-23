@@ -48,8 +48,18 @@
     &__item {
       font-size: 21px;
       padding: 0 0 0 20px;
+      &::after {
+        content: "";
+        display: block;
+        border-bottom: $hover 1px solid;
+        transform: scaleX(0);
+        transition: transform 300ms ease-in-out;
+      }
+      &:hover::after {
+        transform: scaleX(1);
     }
   }
+}
   header {
     align-items: center;
     justify-content: space-around;
