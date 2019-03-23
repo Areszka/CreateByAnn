@@ -25,6 +25,18 @@
   .kontakt__form input {
     width: 485px;
   }
+  .bigBox2 {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .text--omnie {
+    width: 300px;
+    padding-left: 30px;
+  }
+  .image--omnie {
+    width: 40vw;
+    max-width: 300px;
+  }
 }
 
 @media screen and (min-width: 670px) {
@@ -41,5 +53,17 @@
   header {
     align-items: center;
     justify-content: space-around;
+  }
+}
+@media screen and (min-width: 440px) {
+  .box {
+    width: 300px;
+    margin: auto auto auto 20px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  .image {
+    margin: auto 20px auto auto;
+    padding-left: 10px;
   }
 }
