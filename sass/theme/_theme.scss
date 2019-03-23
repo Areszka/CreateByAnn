@@ -7,6 +7,9 @@ body {
   padding: 0;
   background-color: $primary;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 //header
 

@@ -12,61 +12,64 @@ get_header();
 <div class="btn--container">
     <div class="btn">Zobacz produkty</div>
 </div>
-    <svg width="100%" viewBox="0 0 2304 478" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M1083 193.761C332.5 359.198 0 0 0 0V478H2304V448.598C2304 448.598 1833.5 28.3228 1083 193.761Z" fill="white"/></svg>
+
+<svg width="100%" viewBox="0 0 2304 478" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1083 193.761C332.5 359.198 0 0 0 0V478H2304V448.598C2304 448.598 1833.5 28.3228 1083 193.761Z" fill="white"/></svg>
+
 <div class="oMnie">
-	<div class="section__header"><p>O MNIE</p></div>
+	<div class="section__header"><p id="omnie">O MNIE</p></div>
 	<div class="bigBox2">
 		<img class="image--omnie" src="<?php echo get_template_directory_uri() ?>/img/Filip.jpg" alt="">
 		<div class="text--omnie"><?php echo esc_html(get_post_meta(get_the_ID(), "text", true))?></div>
 	</div>
 </div>
+
 <svg width="100%" viewBox="0 0 2304 299" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V84.8513C508.747 341.743 917.117 286.017 1305.32 233.042C1636.3 187.876 1952.63 144.711 2304 299V0H0Z" fill="white"/></svg>
+
 <div class="produkty">
-<div class="section__header"><p>PRODUKTY</p></div>
+	<div class="section__header"><p id="produkty">PRODUKTY</p></div>
 
-<?php
-// Wyświetla kategorie w kolejności alfabetycznej
-$categories = get_categories(
-	array(
-		'orderby' => 'name',
-	)
-);
-echo( '<div class="produkty__categories">' );
-	echo( '<p class="produkty__category active" data-category="">Wszystkie</p>' );
+	<?php
+	// Wyświetla kategorie w kolejności alfabetycznej
+	$categories = get_categories(
+		array(
+			'orderby' => 'name',
+		)
+	);
+	echo( '<div class="produkty__categories">' );
+		echo( '<p class="produkty__category active" data-category="">Wszystkie</p>' );
+		foreach ( $categories as $category ) {
+		echo( '<p class="produkty__category" data-category="' . $category->term_id . '">' . esc_html( $category->name ) . '</p>' );
+	}
+	echo( '</div>' );
+
+	// Wyświetlanie tagów w kolejności alfabetycznej dla każdej kategorii
+	// (tag wyświetla się jeżeli istnieje produkt danej kategorii z tym tagiem)
+	$tags = get_tags(
+		array(
+			'orderby' => 'name',
+		)
+	);
 	foreach ( $categories as $category ) {
-	echo( '<p class="produkty__category" data-category="' . $category->term_id . '">' . esc_html( $category->name ) . '</p>' );
-}
-echo( '</div>' );
-
-// Wyświetlanie tagów w kolejności alfabetycznej dla każdej kategorii
-// (tag wyświetla się jeżeli istnieje produkt danej kategorii z tym tagiem)
-$tags = get_tags(
-	array(
-		'orderby' => 'name',
-	)
-);
-foreach ( $categories as $category ) {
-	echo( '<div class="produkty__tags" data-category="' . $category->term_id . '">' );
-	foreach ( $tags as $tag ) {
-		$args = array(
-			'post_type'     => 'product',
-			'category_name' => $category->slug,
-			'tag_id'        => $tag->term_id,
-		);
-		$the_query = new WP_Query( $args );
-		if ( $the_query->have_posts() ) {
-			echo( '<p class="produkty__tag" data-category="' . $category->term_id . '" data-tag="' . $tag->term_id . '">' . esc_html( $tag->name ) . '</p>' );
+		echo( '<div class="produkty__tags" data-category="' . $category->term_id . '">' );
+		foreach ( $tags as $tag ) {
+			$args = array(
+				'post_type'     => 'product',
+				'category_name' => $category->slug,
+				'tag_id'        => $tag->term_id,
+			);
+			$the_query = new WP_Query( $args );
+			if ( $the_query->have_posts() ) {
+				echo( '<p class="produkty__tag" data-category="' . $category->term_id . '" data-tag="' . $tag->term_id . '">' . esc_html( $tag->name ) . '</p>' );
+			}
 		}
+		echo( '</div>' );
 	}
-	echo( '</div>' );
-}
-	echo( '<div class="produkty__tags active" data-category="">' );
-	foreach ( $tags as $tag ) {
-		echo( '<p class="produkty__tag" data-tag="' . $tag->term_id . '" data-category="">' . esc_html( $tag->name ) . '</p>' );
-	}
-	echo( '</div>' );
-?>
+		echo( '<div class="produkty__tags active" data-category="">' );
+		foreach ( $tags as $tag ) {
+			echo( '<p class="produkty__tag" data-tag="' . $tag->term_id . '" data-category="">' . esc_html( $tag->name ) . '</p>' );
+		}
+		echo( '</div>' );
+	?>
 		
 	<ul class="produkty__list">
 
@@ -107,7 +110,7 @@ if ( $the_query->have_posts() ) {
 </svg>
 
 <div class="kontakt">
-	<div class="section__header"><p>KONTAKT</p></div>
+	<div class="section__header"><p id="kontakt">KONTAKT</p></div>
 	<p>Adres email: <?php echo esc_html(get_post_meta(get_the_ID(), "email", true))?></p>
 	<p>Numer telefonu: <?php echo esc_html(get_post_meta(get_the_ID(), "numer", true))?></p>
 	<form class="kontakt__form" action="contactform.php" method="post">
