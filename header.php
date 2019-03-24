@@ -26,9 +26,9 @@ if (!defined('ABSPATH')) {
 		</div>
 		<div class="nav nav--no">
 			<ul class="nav__list">
-                <li class="nav__item"><a href="#produkty">PRODUKTY</a></li>
-                <li class="nav__item"><a href="#omnie">O MNIE</a></li>
-                <li class="nav__item"><a href="#kontakt">KONTAKT</a></li>
+                <li class="nav__item"><a class="nav__link" href="#produkty">PRODUKTY</a></li>
+                <li class="nav__item"><a class="nav__link" href="#omnie">O MNIE</a></li>
+                <li class="nav__item"><a class="nav__link" href="#kontakt">KONTAKT</a></li>
             </ul>
         </div>
 	</header>

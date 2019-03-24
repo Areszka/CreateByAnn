@@ -85,7 +85,7 @@ if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
 		echo ( '<li class="produkty__item">' .
-		'<img src="' . esc_html( get_post_meta( get_the_ID(), 'image', true ) ) . '" alt="">' .
+		'<div class="container">' . '<img src="' . esc_html( get_post_meta( get_the_ID(), 'image', true ) ) . '" alt="">' . '<div class="overlay"><div class="produkty__text">Zobacz</div></div></div>' .
 		'<p class="produkty__nr">Nr ' . get_the_ID() . '</p>' .
 		'<p class="produkty__price">' . esc_html( get_post_meta( get_the_ID(), 'price', true ) ) . ' zł</p>' .
 		'</li>'
@@ -97,6 +97,9 @@ if ( $the_query->have_posts() ) {
 ?>
 
 	</ul>
+	<div class="modal">
+		
+	</div>
 	<div class="produkty__nav">
 		<svg class="arrow-back" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 		<span class="num"></span>

@@ -20,10 +20,7 @@ header {
 }
 .header--menu {
   margin: 0;
-  padding: 0;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  justify-content: center;
   background-color: #fff;
 }
 .logo {
@@ -116,6 +113,7 @@ ul {
   padding-bottom: 150px;
 }
 .btn {
+  cursor: pointer;
   background-color: #9cdcf1;
   color: #000;
   font-family: "Cutive Mono", monospace;
@@ -124,7 +122,7 @@ ul {
   border-radius: 43px;
   font-weight: 900;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .btn:hover {
   transform: scale(1.03);
@@ -216,8 +214,11 @@ ul {
   }
   &__item {
     & img {
+      display: block;
+      height: auto;
       width: 100%;
       box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+      transition: .5s ease;
     }
   }
   &__list {
@@ -249,6 +250,11 @@ ul {
     & svg {
       width: 35px;
     }
+  }
+  &__text {
+    color: white;
+    font-family: "Cutive Mono", monospace;
+    font-size: 38px;
   }
 }
 .num {
@@ -302,4 +308,39 @@ ul {
 }
 input:focus + label{
   transform: translateY(-10px) scale(0.9, 0.9);
+}
+.container {
+  position: relative;
+}
+.produkty__item:hover img {
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000;
+}
+.container:hover .overlay {
+  opacity: 0.8;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+  filter: blur(4px);
 }

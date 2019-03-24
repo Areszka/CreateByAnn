@@ -30,11 +30,25 @@ const createProduct = product => {
   //prepare product container
   const productDiv = document.createElement("li");
   productDiv.setAttribute("class", "produkty__item");
+
+  const container = document.createElement("div");
+  container.setAttribute("class", "container");
+  productDiv.appendChild(container);
   //prepare and append product image
   const image = document.createElement("img");
   image.setAttribute("src", productImage);
   image.setAttribute("alt", "zdjęcie kartki");
-  productDiv.appendChild(image);
+  container.appendChild(image);
+
+  const overlay = document.createElement("div");
+  overlay.setAttribute("class", "overlay");
+  container.appendChild(overlay);
+
+  const divText = document.createElement("div");
+  divText.setAttribute("class", "produkty__text");
+  const text = document.createTextNode("Zobacz");
+  divText.appendChild(text);
+  overlay.appendChild(divText);
   //prepare and append product id
   const idElement = document.createElement("p");
   idElement.setAttribute("class", "produkty__nr");
