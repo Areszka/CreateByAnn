@@ -3,6 +3,7 @@ import axios from "axios";
 const SINGLE_CATEGORY_ARRAY = document.querySelectorAll(".produkty__category");
 const SINGLE_TAG_ARRAY = document.querySelectorAll(".produkty__tag");
 const PRODUCTS_DIV = document.querySelector(".produkty__list");
+let pageNumber = document.querySelector(".num");
 let currentCategory = "";
 let currentTag = "";
 
@@ -85,6 +86,7 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
       currentCategory = requestedCategory;
       currentTag = requestedTag;
       currentPage = 1;
+      pageNumber.innerHTML = currentPage;
       arrowBack.style.display = "none";
       for (const product of response.data) {
         createProduct(product);
@@ -129,6 +131,7 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
       currentCategory = requestedCategory;
       currentTag = "";
       currentPage = 1;
+      pageNumber.innerHTML = currentPage;
       arrowBack.style.display = "none";
       for (const product of response.data) {
         createProduct(product);
@@ -138,7 +141,6 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
 }
 
 let currentPage = 1;
-let pageNumber = document.querySelector(".num");
 pageNumber.innerHTML = currentPage;
 const arrowBack = document.querySelector(".arrow-back");
 const arrowForward = document.querySelector(".arrow-forward");
@@ -181,4 +183,9 @@ arrowForward.addEventListener("click", () => {
       arrowForward.style.display = "none";
       console.log(error);
     });
+
+  const nextUrl = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage+1}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
+  axios.get(nextUrl).catch(error => {
+      arrowForward.style.display = "none";
+  });
 });
