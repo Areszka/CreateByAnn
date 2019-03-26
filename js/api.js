@@ -75,7 +75,7 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
     const requestedCategory = singleTag.dataset.category;
     const requestedTag = singleTag.dataset.tag;
 
-  const url = `/wp-json/wp/v2/product/?per_page=9&page=1${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}${requestedTag != "" ? `&tags=${requestedTag}` : ""}`;
+    const url = `/wp-json/wp/v2/product/?per_page=9&page=1${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}${requestedTag != "" ? `&tags=${requestedTag}` : ""}`;
     axios.get(url).then(response => {
       if(response.data.length<9){
         arrowForward.style.visibility='none';
@@ -91,6 +91,12 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
       for (const product of response.data) {
         createProduct(product);
       }
+    });
+    const nextUrl = `/wp-json/wp/v2/product/?per_page=9&page=2${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}${requestedTag != "" ? `&tags=${requestedTag}` : ""}`;
+        axios.get(nextUrl).then(data=>{
+      arrowForward.style.visibility = "visible";
+    }).catch(error => {
+        arrowForward.style.visibility = "hidden";
     });
   });
 }
@@ -137,7 +143,14 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
         createProduct(product);
       }
     });
+    const nextUrl = `/wp-json/wp/v2/product/?per_page=9&page=2${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}`;
+    axios.get(nextUrl).then(data=>{
+      arrowForward.style.visibility = "visible";
+    }).catch(error => {
+        arrowForward.style.visibility = "hidden";
+    });
   });
+  
 }
 
 let currentPage = 1;
