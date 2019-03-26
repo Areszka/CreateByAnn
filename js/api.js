@@ -78,16 +78,16 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
   const url = `/wp-json/wp/v2/product/?per_page=9&page=1${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}${requestedTag != "" ? `&tags=${requestedTag}` : ""}`;
     axios.get(url).then(response => {
       if(response.data.length<9){
-        arrowForward.style.display='none';
+        arrowForward.style.visibility='none';
       }else{
-        arrowForward.style.display='block';
+        arrowForward.style.visibility='block';
       }
       clearProducts();
       currentCategory = requestedCategory;
       currentTag = requestedTag;
       currentPage = 1;
       pageNumber.innerHTML = currentPage;
-      arrowBack.style.display = "none";
+      arrowBack.style.visibility = "hidden";
       for (const product of response.data) {
         createProduct(product);
       }
@@ -123,16 +123,16 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
     //make API request
     axios.get(url).then(response => {
       if(response.data.length<9){
-        arrowForward.style.display='none';
+        arrowForward.style.visibility='none';
       }else{
-        arrowForward.style.display='block';
+        arrowForward.style.visibility='block';
       }
       clearProducts();
       currentCategory = requestedCategory;
       currentTag = "";
       currentPage = 1;
       pageNumber.innerHTML = currentPage;
-      arrowBack.style.display = "none";
+      arrowBack.style.visibility = "hidden";
       for (const product of response.data) {
         createProduct(product);
       }
@@ -148,9 +148,9 @@ const arrowForward = document.querySelector(".arrow-forward");
 arrowBack.addEventListener("click", () => {
   currentPage--;
   pageNumber.innerHTML = currentPage;
-  arrowForward.style.display = "block";
+  arrowForward.style.visibility = "visible";
   if (currentPage === 1) {
-    arrowBack.style.display = "none";
+    arrowBack.style.visibility = "hidden";
   }
   const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
   //make API request
@@ -165,7 +165,7 @@ arrowBack.addEventListener("click", () => {
 arrowForward.addEventListener("click", () => {
   currentPage++;
   pageNumber.innerHTML = currentPage;
-  arrowBack.style.display = "block";
+  arrowBack.style.visibility = "visible";
   const url = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
   //make API request
   axios
@@ -173,19 +173,19 @@ arrowForward.addEventListener("click", () => {
     .then(response => {
       clearProducts();
       if (response.data.length < 9) {
-        arrowForward.style.display = "none";
+        arrowForward.style.visibility = "hidden";
       }
       for (const product of response.data) {
         createProduct(product);
       }
     })
     .catch(error => {
-      arrowForward.style.display = "none";
+      arrowForward.style.visibility = "hidden";
       console.log(error);
     });
 
   const nextUrl = `/wp-json/wp/v2/product/?per_page=9&page=${currentPage+1}${currentCategory != "" ? `&categories=${currentCategory}` : ""}${currentTag != "" ? `&tags=${currentTag}` : ""}`;
   axios.get(nextUrl).catch(error => {
-      arrowForward.style.display = "none";
+      arrowForward.style.visibility = "hidden";
   });
 });
