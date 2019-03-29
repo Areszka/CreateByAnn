@@ -333,14 +333,25 @@ input:focus + label{
   opacity: 0.8;
 }
 .modal {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 3;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  z-index: 1;
   background: rgba(255, 255, 255, 0.3);
-  filter: blur(4px);
+  &__shape {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    background-color: #fff;
+    margin: auto;
+    border: 4px solid #9CDCF1;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 65%;
+    }
+  }
 }

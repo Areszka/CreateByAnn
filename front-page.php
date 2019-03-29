@@ -98,14 +98,15 @@ if ( $the_query->have_posts() ) {
 
 	</ul>
 	<div class="modal">
+		<div class="modal__shape"></div>
 	</div>
 	<div class="produkty__nav">
 		<svg class="arrow-back" style="visibility: hidden;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 		<span class="num"></span>
 		<svg style="<?php echo wp_count_posts('product')->publish>9? 'visibility: visible;':'visibility: hidden;' ?>" class="arrow-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-	</span>
+	</div>
 </div>
-</div>
+
 
 <svg width="100%" viewBox="0 0 544 125" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M544 5.90004V125H0V1.63685C66.4756 -4.2733 128.841 19.0585 191.234 42.4C301.191 83.5363 411.232 124.704 544 5.90004Z" fill="white"/>
