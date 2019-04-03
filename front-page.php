@@ -98,6 +98,13 @@ if ( $the_query->have_posts() ) {
 
 	</ul>
 	<div class="modal">
+		<div class="modal__shape">
+			<div class="modal__picture">
+			<img class="pic" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
+			</div>
+			<div class="modal__text"> bal bla</div>
+			<img class="modal__logo logo--shadow" src="<?php echo get_template_directory_uri() ?>/img/logo2.png" alt="">
+		</div>
 	</div>
 	<div class="produkty__nav">
 		<svg class="arrow-back" style="visibility: hidden;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>

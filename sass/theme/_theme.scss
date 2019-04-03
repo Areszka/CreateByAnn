@@ -333,14 +333,41 @@ input:focus + label{
   opacity: 0.8;
 }
 .modal {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background: rgba(255, 255, 255, 0.3);
-  filter: blur(4px);
+  &__shape {
+    display: flex;
+    width: 80%;
+    max-width: 900px;
+    background-color: #fff;
+    margin: auto;
+    border: 4px solid #9CDCF1;
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 65%;
+    }
+  }
+  &__picture {
+    flex-basis: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__text {
+    flex-basis: 35%;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    color: red;
+  }
+}
+.pic {
+  width: 70%;
 }
