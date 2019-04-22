@@ -100,10 +100,17 @@ if ( $the_query->have_posts() ) {
 	<div class="modal">
 		<div class="modal__shape">
 			<div class="modal__picture">
-			<img class="pic" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
+				<img class="pic" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
 			</div>
-			<div class="modal__text"> bal bla</div>
-			<img class="modal__logo logo--shadow" src="<?php echo get_template_directory_uri() ?>/img/logo2.png" alt="">
+			<div class="modal__right">
+				<div class="modal__text">
+					 <h2>Tytuł kartki</h2>
+					 <p>CENA: 34zł </p>
+					 <p>NUMER KARTKI: 4</p>
+				</div>
+				<svg class="cross" xmlns="http://www.w3.org/2000/svg" width="17" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+				<div class="modal__pic"><img class="modal__logo" src="<?php echo get_template_directory_uri() ?>/img/logo2.png" alt=""></div>
+			</div>
 		</div>
 	</div>
 	<div class="produkty__nav">

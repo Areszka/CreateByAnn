@@ -52,9 +52,18 @@ for (const singleNavList of navList) {
 }
 const openModal = () => {
     let modal = document.querySelector(".modal");
-    modal.style.display = "block";
+    modal.style.display = "flex";
 }
-let test1 = document.querySelectorAll(".container");
-for (const singleOverlay of test1) {
+let container = document.querySelectorAll(".container");
+for (const singleOverlay of container) {
     singleOverlay.addEventListener("click", openModal, false);
+}
+const closeModal = () => {
+    let modal = document.querySelector(".modal");
+    modal.style.display = "none";
+}
+
+let a = document.querySelectorAll(".cross");
+for (const singleOverlay of a) {
+    singleOverlay.addEventListener("click", closeModal, false);
 }

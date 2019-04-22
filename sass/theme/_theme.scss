@@ -333,15 +333,34 @@ input:focus + label{
   opacity: 0.8;
 }
 .modal {
-  display: flex;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
+  backdrop-filter: blur(10px);  
+  -webkit-backdrop-filter: blur(10px);
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.3);
+  & h2 {
+    max-width: 270px;
+    text-align: center;
+    padding-bottom: 10%;
+    border-bottom: #333 2px solid;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    margin: 0 auto 18% auto;
+    font-size: 3vw;
+  }
+  & p {
+    font-size: 2vw;
+    padding-left: 17px;
+    margin: 8px;
+    color: #544C4C;
+  }
   &__shape {
+    position: relative;
     display: flex;
     width: 80%;
     max-width: 900px;
@@ -355,19 +374,36 @@ input:focus + label{
     }
   }
   &__picture {
-    flex-basis: 65%;
+    flex-basis: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   &__text {
-    flex-basis: 35%;
-    display: flex;    
-    justify-content: center;
-    align-items: center;
-    color: red;
+    padding: 25% 15% 0 0;
+  }
+  &__logo {
+    width: 48%;
+  }
+  &__right {
+    position: relative;
+    flex-basis: 45%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-family: "Cutive Mono", monospace;
+  }
+  &__pic {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 }
 .pic {
   width: 70%;
+}
+.cross {
+  position: absolute;
+  right: 15px;
+  top: 10px;
 }
