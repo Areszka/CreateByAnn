@@ -84,7 +84,7 @@ $the_query = new WP_Query( $args );
 if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
-		echo ( '<li class="produkty__item">' .
+		echo ( '<li class="produkty__item" data-title="' . get_the_title() .'">' .
 		'<div class="container">' . '<img src="' . esc_html( get_post_meta( get_the_ID(), 'image', true ) ) . '" alt="">' . '<div class="overlay"><div class="produkty__text">Zobacz</div></div></div>' .
 		'<p class="produkty__nr">Nr ' . get_the_ID() . '</p>' .
 		'<p class="produkty__price">' . esc_html( get_post_meta( get_the_ID(), 'price', true ) ) . ' zł</p>' .
@@ -105,8 +105,8 @@ if ( $the_query->have_posts() ) {
 			<div class="modal__right">
 				<div class="modal__text">
 					 <h2>Tytuł kartki</h2>
-					 <p>CENA: 34zł </p>
-					 <p>NUMER KARTKI: 4</p>
+					 <p class="modal__price"></p>
+					 <p class="modal__numer"></p>
 				</div>
 				<svg class="cross" xmlns="http://www.w3.org/2000/svg" width="17" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 				<div class="modal__pic"><img class="modal__logo" src="<?php echo get_template_directory_uri() ?>/img/logo2.png" alt=""></div>
