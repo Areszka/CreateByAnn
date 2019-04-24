@@ -10,6 +10,10 @@ body {
 html {
   scroll-behavior: smooth;
 }
+a {
+  text-decoration: none;
+  color: $secondary;
+}
 
 //header
 
@@ -40,10 +44,6 @@ header {
   }
 }
 .nav {
-  & a {
-    text-decoration: none;
-    color: $secondary;
-  }
   &--no {
     display: none;
   }
@@ -326,8 +326,8 @@ input:focus + label{
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: .5s ease;
-  background-color: #000;
+  transition: .3s ease;
+  background-color: #888;
 }
 .container:hover .overlay {
   opacity: 0.8;
@@ -351,7 +351,7 @@ input:focus + label{
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     margin: 0 auto 18% auto;
-    font-size: 3vw;
+    font-size: 20px;
   }
   & p {
     font-size: 2vw;

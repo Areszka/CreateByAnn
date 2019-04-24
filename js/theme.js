@@ -276,6 +276,8 @@ const openModal = (event) => {
     const title = container.dataset.title;
     const modalTitle = modal.querySelector("h2");
     modalTitle.innerHTML = title;
+    let body = document.querySelector("body");
+    body.style.overflow = "hidden";
 }
 function b() {
 let container = document.querySelectorAll(".container");
@@ -287,6 +289,8 @@ b();
 const closeModal = () => {
     let modal = document.querySelector(".modal");
     modal.style.display = "none";
+    let body = document.querySelector("body");
+    body.style.overflow = "visible";
 }
 
 let a = document.querySelectorAll(".cross");
