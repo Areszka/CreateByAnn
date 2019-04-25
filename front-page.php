@@ -129,27 +129,8 @@ if ( $the_query->have_posts() ) {
 	<div class="section__header"><p id="kontakt">KONTAKT</p></div>
 	<p>Adres email: <?php echo esc_html(get_post_meta(get_the_ID(), "email", true))?></p>
 	<p>Numer telefonu: <?php echo esc_html(get_post_meta(get_the_ID(), "numer", true))?></p>
-	<form class="kontakt__form" action="contactform.php" method="post">
-		<div class="myInput">
-			<input type="text" name="name" id="name">
-			<label for="name">Imię i nazwisko</label>
-		</div>
-		<div class="myInput">
-			<input type="text" name="subject" id="subject">
-			<label for="subject">Temat</label>
-		</div>
-		<div class="myInput">
-			<input type="text" name="numer" id="numer">	
-			<label for="numer">Numer telefonu</label>
-		</div>
-		<div class="myInput">
-			<input type="text" name="message" id="message">
-			<label for="message">Treść wiadomości</label>
-		</div>
-	</form>
-	<div class="btn--container">
-    	<div class="btn">Wyślij</div>
-	</div>
+	<?php echo do_shortcode('[contact-form-7 id="91" title="Formularz 1"]'); ?>
 </div>
+
 <?php get_footer(); ?>
 
