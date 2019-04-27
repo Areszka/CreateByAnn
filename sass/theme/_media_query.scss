@@ -19,6 +19,16 @@
     .section__header {
         font-size: 35px;
   }
+  .container:hover .overlay {
+    opacity: 0.8;
+  }
+  .produkty__item:hover img {
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+  }
+  .container {
+    cursor: pointer;
+  }
 } 
 
 @media screen and (min-width: 565px) {
@@ -81,4 +91,19 @@
   .modal h2 {
     font-size: 30px;
   }
+}
+@media screen and (max-width: 700px) {
+  .bigBox {
+    height: calc(100vh - 300px);
+    & img {
+      height: 50vh;
+    }
+    & button {
+      display: none;
+    }
+  }
+  .btn--container {
+    display: flex;
+  }
+
 }

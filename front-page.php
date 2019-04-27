@@ -7,10 +7,13 @@ get_header();
 ?>
 <div class="bigBox">
 	<img class="image" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
-	<div class="box"><?php echo esc_html(get_post_meta(get_the_ID(), "url", true))?></div>
+	<div class="box">
+		<p><?php echo esc_html(get_post_meta(get_the_ID(), "url", true))?></p>
+		<button type="button"><a href="#produkty">Zobacz produkty</a></button>
+	</div>
 </div>
 <div class="btn--container">
-    <div class="btn"><a href="#produkty">Zobacz produkty</a></div>
+	<button type="button"><a href="#produkty">Zobacz produkty</a></button>
 </div>
 
 <svg width="100%" viewBox="0 0 2304 478" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1083 193.761C332.5 359.198 0 0 0 0V478H2304V448.598C2304 448.598 1833.5 28.3228 1083 193.761Z" fill="white"/></svg>
@@ -112,7 +115,9 @@ if ( $the_query->have_posts() ) {
 				<div class="modal__pic"><img class="modal__logo" src="<?php echo get_template_directory_uri() ?>/img/logo2.png" alt=""></div>
 			</div>
 		</div>
+		<div class="background"></div>
 	</div>
+	<div class="background"></div>
 	<div class="produkty__nav">
 		<svg class="arrow-back" style="visibility: hidden;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 		<span class="num"></span>

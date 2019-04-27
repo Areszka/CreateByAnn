@@ -92,7 +92,7 @@ for (const singleTag of SINGLE_TAG_ARRAY) {
       for (const product of response.data) {
         createProduct(product);
       }
-      b();
+      screenTest(mql);
     });
     const nextUrl = `/wp-json/wp/v2/product/?per_page=9&page=2${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}${requestedTag != "" ? `&tags=${requestedTag}` : ""}`;
         axios.get(nextUrl).then(data=>{
@@ -144,7 +144,7 @@ for (const singleCategory of SINGLE_CATEGORY_ARRAY) {
       for (const product of response.data) {
         createProduct(product);
       }
-      b();
+      screenTest(mql);
     });
     const nextUrl = `/wp-json/wp/v2/product/?per_page=9&page=2${requestedCategory != "" ? `&categories=${requestedCategory}` : ""}`;
     axios.get(nextUrl).then(data=>{
@@ -175,7 +175,7 @@ arrowBack.addEventListener("click", () => {
     for (const product of response.data) {
       createProduct(product);
     }
-    b();
+    screenTest(mql);
   });
 });
 
@@ -195,7 +195,7 @@ arrowForward.addEventListener("click", () => {
       for (const product of response.data) {
         createProduct(product);
       }
-      b();
+      screenTest(mql);
     })
     .catch(error => {
       arrowForward.style.visibility = "hidden";
@@ -278,22 +278,42 @@ const openModal = (event) => {
     modalTitle.innerHTML = title;
     let body = document.querySelector("body");
     body.style.overflow = "hidden";
+    let background = document.querySelector(".background");
+    background.style.display = "block";
 }
-function b() {
-let container = document.querySelectorAll(".container");
-for (const singleOverlay of container) {
-    singleOverlay.addEventListener("click", openModal, false);
-}
-}
-b();
 const closeModal = () => {
     let modal = document.querySelector(".modal");
     modal.style.display = "none";
     let body = document.querySelector("body");
     body.style.overflow = "visible";
+    let background = document.querySelector(".background");
+    background.style.display = "none";
 }
 
 let a = document.querySelectorAll(".cross");
 for (const singleOverlay of a) {
     singleOverlay.addEventListener("click", closeModal, false);
 }
+let background = document.querySelectorAll(".background");
+for (const singleOverlay of background) {
+    singleOverlay.addEventListener("click", closeModal, false);
+}
+
+var mql = window.matchMedia('(min-width: 672px)');
+
+function screenTest(e) {
+  if (e.matches) {
+    let container = document.querySelectorAll(".container");
+    for (const singleOverlay of container) {
+    singleOverlay.addEventListener("click", openModal, false);
+    }
+    
+  } else {
+    let container = document.querySelectorAll(".container");
+    for (const singleOverlay of container) {
+    singleOverlay.removeEventListener("click", openModal, false);
+    }
+  }
+}
+screenTest(mql);
+mql.addListener(screenTest);
