@@ -39,13 +39,9 @@
     flex-direction: row;
     justify-content: center;
   }
-  .text--omnie {
-    width: 300px;
-    padding-left: 30px;
-  }
-  .image--omnie {
-    width: 40vw;
-    max-width: 300px;
+  .image {
+    margin: auto 20px auto auto;
+    padding-left: 10px;
   }
 }
 
@@ -77,14 +73,11 @@
 }
 @media screen and (min-width: 440px) {
   .box {
-    width: 300px;
-    margin: auto auto auto 20px;
-    padding-right: 10px;
+    margin-right: auto;
     text-align: center;
-  }
-  .image {
-    margin: auto 20px auto auto;
-    padding-left: 10px;
+    & p {
+      font-size: 19px;
+    }
   }
 }
 @media screen and (min-width: 900px) {
@@ -92,7 +85,7 @@
     font-size: 30px;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 723px) {
   .bigBox {
     height: calc(100vh - 300px);
     & img {

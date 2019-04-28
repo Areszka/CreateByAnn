@@ -88,11 +88,12 @@ ul {
 }
 .box {
   text-align: left;
-  margin-left: 10px;
-  margin-right: 15px;
+  padding-left: 10px;
+  padding-right: 25px;
   font-family: "Cutive Mono", monospace;
+  max-width: 300px;
   & p {
-    font-size:19px;
+    font-size:17px;
     margin-bottom: 55px;
   }
 }
@@ -100,7 +101,10 @@ ul {
   text-align: center;
   font-family: "Cutive Mono", monospace;
   width: 70%;
+  max-width: 300px;
   margin-top: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .image {
   height: 60vh;
@@ -109,6 +113,8 @@ ul {
 .image--omnie {
   width: 60vw;
   margin-top: 75px;
+  max-width: 300px;
+  padding-left: 10px;
 }
 .btn--container {
   display: none;
@@ -146,12 +152,17 @@ button:hover {
   font-family: $mainfont, sans-serif;
   font-size: 27px;
   font-weight: 600;
-  padding-top: 75px;
+  padding-top: 30px;
   margin-top: -4px;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  // & p {
+  //   border-bottom: 1px #333 solid;
+  //   padding: 30px 60px;
+  //   transform: scaleY(1.1);
+  // }
 }
 .bigBox2 {
   display: flex;
@@ -160,7 +171,7 @@ button:hover {
 }
 .produkty {
   font-family: $mainfont;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
   &__categories {
     display: flex;
     justify-content: center;
@@ -318,6 +329,7 @@ input:focus, textarea:focus {
 .kontakt {
   background-color: #fff;
   font-family: "Cutive Mono", monospace;
+  padding-bottom: 30px;
   & p {
     text-align: center;
   }
@@ -326,13 +338,8 @@ input:focus, textarea:focus {
 // ---------------------------------------- //
 
 .container {
-  // cursor: pointer;
   position: relative;
 }
-// .produkty__item:hover img {
-//   -webkit-filter: blur(2px);
-//   filter: blur(2px);
-// }
 .overlay {
   position: absolute;
   top: 0;
@@ -346,9 +353,6 @@ input:focus, textarea:focus {
   transition: .3s ease;
   background-color: #888;
 }
-// .container:hover .overlay {
-//   opacity: 0.8;
-// }
 
 // Modal //
 
@@ -440,4 +444,12 @@ input:focus, textarea:focus {
   top: 10px;
 }
 
-// koniec Modal //
+// Footer //
+
+footer {
+  font-size: 12px;
+  font-family: "Cutive Mono", monospace;
+  text-align: left;
+  padding: 10px 20px;
+  background-color: #fff;
+}

@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 
 
 <?php wp_footer(); ?>
-
+<footer>Projekt i wykonanie Agnieszka Grabowska i Filip Wachowiak dla CreateByAnn 2019 Wszelkie Prawa Zastrzeżone.</footer>
 </body>
 
 </html>
