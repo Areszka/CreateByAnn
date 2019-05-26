@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 <div class="bigBox">
-	<img class="image" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
+	<img class="image" src="<?php echo esc_html(get_post_meta(get_the_ID(), "main_image", true))?>" alt="">
 	<div class="box">
 		<p><?php echo esc_html(get_post_meta(get_the_ID(), "url", true))?></p>
 		<button type="button"><a href="#produkty">Zobacz produkty</a></button>
@@ -21,7 +21,7 @@ get_header();
 <div class="oMnie">
 	<div class="section__header"><p id="omnie">O MNIE</p></div>
 	<div class="bigBox2">
-		<img class="image--omnie" src="<?php echo get_template_directory_uri() ?>/img/Filip.jpg" alt="">
+		<img class="image--omnie" src="<?php echo esc_html(get_post_meta(get_the_ID(), "about_image", true))?>" alt="">
 		<div class="text--omnie"><?php echo esc_html(get_post_meta(get_the_ID(), "text", true))?></div>
 	</div>
 </div>
@@ -103,7 +103,7 @@ if ( $the_query->have_posts() ) {
 	<div class="modal">
 		<div class="modal__shape">
 			<div class="modal__picture">
-				<img class="pic" src="<?php echo get_template_directory_uri() ?>/img/image.png" alt="">
+				<img class="pic" src="" alt="">
 			</div>
 			<div class="modal__right">
 				<div class="modal__text">

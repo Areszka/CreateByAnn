@@ -23,9 +23,23 @@ function cmb2_sample_metaboxes() {
 	) );
 
 	$cmb->add_field( array(
+		'name'       => __( 'Główne zdjęcie', 'cmb2' ),
+		//'desc'       => __( 'field description (optional)', 'cmb2' ),
+		'id'         => 'main_image',
+		'type'       => 'file',
+	) );
+
+	$cmb->add_field( array(
 		'name' => __( 'O mnie', 'cmb2' ),
         'id'   => 'url',
 		'type' => 'textarea_small',
+	) );
+
+	$cmb->add_field( array(
+		'name'       => __( 'O mnie - zdjęcie', 'cmb2' ),
+		//'desc'       => __( 'field description (optional)', 'cmb2' ),
+		'id'         => 'about_image',
+		'type'       => 'file',
 	) );
 
 	$cmb->add_field( array(
